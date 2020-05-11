@@ -30,10 +30,10 @@ class Item(Resource):
     )
     # declaring @jwt_required - user must authenticate to use GET.
     # token must be passed as the header - Authorization : JWT <token>
-    @jwt_required
+    @jwt_required()
     def get(self, name):
-
-        item = next(filter(lambda x: x['name'] == name,items), None)
+        item = next(filter(lambda x: x['name'] == name, items), None)
+        return {'item':item}, 200 if item else 404
         # lambda gets two args. first is the filtering function and the other is the list
         # lambda steps:
         # 1. x['name'] == name is iterating items
@@ -46,7 +46,7 @@ class Item(Resource):
         #    if item['name'] == name:
         #        return item
 
-        return {'item':item}, 200 if item is not None else 404
+        #
 
     def post(self, name):
 

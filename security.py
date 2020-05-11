@@ -24,6 +24,6 @@ def authenticate(username, password):
     if user and safe_str_cmp(user.password,password):
         return user
 
-def identity(paylod):
+def identity(payload):
     user_id = payload['identity']
-    return user_id_mapping.get(user_id, None)
+    return userid_mapping.get(user_id, None)
